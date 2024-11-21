@@ -1,5 +1,6 @@
 package br.com.ambev.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,8 @@ import br.com.ambev.dto.PedidoControllerInputDTO;
 import br.com.ambev.dto.PedidoControllerOutputDTO;
 import br.com.ambev.exception.BusinessException;
 import br.com.ambev.service.PedidoService;
-import jakarta.validation.constraints.NotNull;
+import lombok.NonNull;
+
 
 @RestController
 @RequestMapping(path = PedidoController.path)
@@ -31,7 +33,7 @@ public class PedidoController {
 	 */
 	@PostMapping
 	public ResponseEntity<PedidoControllerOutputDTO> gerenciaPedidos(
-			@RequestBody PedidoControllerInputDTO pedidoControllerInputDTO) throws BusinessException {
+			@RequestBody @NonNull PedidoControllerInputDTO pedidoControllerInputDTO) throws BusinessException {
 		PedidoControllerOutputDTO pedidoControllerOutputDTO = pedidoService.gerenciaPedido(pedidoControllerInputDTO);
 		return ResponseEntity.ok(pedidoControllerOutputDTO);
 	}
@@ -42,7 +44,7 @@ public class PedidoController {
 	 * @throws BusinessException
 	 */
 	@GetMapping("/{codPedido}")
-	public ResponseEntity<PedidoControllerOutputDTO> consultaPedido(@PathVariable @NotNull Long codPedido)
+	public ResponseEntity<PedidoControllerOutputDTO> consultaPedido(@PathVariable @NonNull Long codPedido)
 			throws BusinessException {
 		PedidoControllerOutputDTO pedidoControllerOutputDTO = pedidoService.consultaPedido(codPedido);
 		return ResponseEntity.ok(pedidoControllerOutputDTO);

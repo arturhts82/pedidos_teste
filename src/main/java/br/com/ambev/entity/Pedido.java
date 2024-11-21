@@ -1,6 +1,7 @@
 package br.com.ambev.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -9,16 +10,21 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /** Entidade com dados do pedido*/
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="PEDIDO")
 public class Pedido implements Serializable {
@@ -26,11 +32,12 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue
 	@Column(name="COD_PEDIDO")
 	private Long codPedido;
 	
 	@Column(name="VALOR_TOTAL_PEDIDO")
-	private Double valorTotalPedido;
+	private BigDecimal valorTotalPedido;
 	
 	@Column(name="DATA_PEDIDO")
 	private LocalDate dataPedido;
@@ -42,7 +49,6 @@ public class Pedido implements Serializable {
 	@Column(name="COD_CLIENTE")
 	private Long codCliente;
 
-	@OneToMany
-	@JoinColumn(name = "COD_PEDIDO", nullable = false, insertable=false, updatable=false)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy ="pedido")
 	private Set<PedidoProduto> pedidoProduto;
 }

@@ -1,6 +1,7 @@
 package br.com.ambev.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class PedidoProdutoOutputDTO implements Serializable {
 
 	private String nomeProduto;
 
-	private Double valorUnidade;
+	private BigDecimal valorUnidade;
 
 	private Long quantidadeProduto;
 

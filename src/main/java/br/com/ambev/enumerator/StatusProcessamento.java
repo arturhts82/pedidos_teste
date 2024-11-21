@@ -2,7 +2,8 @@ package br.com.ambev.enumerator;
 
 /**Enum para status de processamento das transações do sistema*/
 public enum StatusProcessamento {
-	
+	/** Sucesso */
+	SU,
 	/** Gravado */
 	GR,
 	/**

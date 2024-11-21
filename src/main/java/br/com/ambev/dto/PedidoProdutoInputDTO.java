@@ -1,10 +1,11 @@
 package br.com.ambev.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NonNull;
 
 /** DTO com dados de entrada dos produtos vinculados ao pedido */
 @Data
@@ -13,16 +14,13 @@ public class PedidoProdutoInputDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;	
 
-	@NotNull
+	@NonNull 
 	private Long codProduto;
-
-	@NotNull
+	@NonNull 
 	private Long quantidadeProduto;
-
-	@NotNull
+	@NonNull 
 	private String nomeProduto;
-
-	@NotNull
-	private Double valorUnidade;
+	@NonNull 
+	private BigDecimal valorUnidade;
 
 }

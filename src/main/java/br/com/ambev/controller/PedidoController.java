@@ -39,7 +39,7 @@ public class PedidoController {
 	}
 
 	/**
-	 * Serviço que consulta dados do pedido pelo codigo do pedido
+	 * Serviço que consulta dados do pedido pelo código do pedido
 	 * 
 	 * @throws BusinessException
 	 */
